@@ -1,275 +1,191 @@
-# BlueHired - Blue Collar Job Listings Platform
+# BlueHired - Blue Collar Job Portal
 
-A comprehensive job portal specifically designed for blue-collar workers, connecting job seekers with employers in various industries including construction, manufacturing, transportation, hospitality, and more.
+A comprehensive full-stack web application for connecting blue-collar job seekers with employers. Built with React (TypeScript) frontend and Django backend.
 
-## 🚀 Features
+## 🚀 Live Application
+
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8001
+- **Admin Panel**: http://localhost:8001/admin/
+
+## 📱 Application Screenshots
+
+### Landing Page - Hero Section
+![BlueHired Landing Page](images/bluehired-hero-section.png)
+
+### Statistics & Job Categories
+![Statistics and Categories](images/bluehired-stats-categories.png)
+
+### Featured Jobs
+![Featured Jobs](images/bluehired-featured-jobs.png)
+
+### Call to Action
+![Call to Action](images/bluehired-cta-section.png)
+
+## ✨ Features
 
 ### For Job Seekers
-- **Government ID Verification**: Secure verification using Aadhaar, PAN, Driving License, Voter ID, or Passport
-- **Advanced Job Search**: Filter by location, skills, experience level, and salary range
-- **Profile Management**: Complete profile with skills, experience, and resume upload
-- **Job Applications**: Apply to jobs with cover letters and additional documents
-- **Application Tracking**: Track application status and receive updates
-- **Job Alerts**: Set up custom alerts for relevant job opportunities
-- **Bookmarks**: Save interesting job listings for later
+- 🔍 Browse job listings by category, location, and skills
+- 📝 Apply to jobs with cover letters
+- 📊 Track application status
+- 👤 Manage profile and skills
+- 🔔 Set job preferences and alerts
 
-### For Job Posters/Employers
-- **Company Verification**: Verified company profiles with detailed information
-- **Job Posting**: Create detailed job listings with requirements and benefits
-- **Application Management**: Review applications, schedule interviews, and manage hiring process
-- **Candidate Communication**: Direct messaging with applicants
-- **Interview Scheduling**: Built-in interview management system
-- **Offer Management**: Send job offers and track responses
+### For Employers
+- 📋 Post and manage job listings
+- 👥 Review job applications
+- 🏢 Company profile management
+- 📈 Applicant tracking system
+- 📊 Job analytics and reporting
 
-### Platform Features
-- **Role-based Access Control**: Separate interfaces for job seekers and employers
-- **Material-UI Design**: Clean, modern, and mobile-responsive interface
-- **Real-time Notifications**: Stay updated on application status and new opportunities
-- **Advanced Analytics**: Job view tracking and application metrics
-- **Reporting System**: Report inappropriate content or fake job listings
+### Search & Filtering
+- 📍 Location-based job search
+- 🎯 Skill-based matching
+- 📈 Experience level filtering
+- 💰 Salary range filtering
+- ⏰ Job type filtering (Full-time, Part-time, Contract, etc.)
 
-## 🛠 Technology Stack
+## 🛠️ Technology Stack
+
+### Frontend
+- **React 18** with TypeScript for type safety
+- **Material-UI (MUI) v5** for professional design
+- **React Router** for client-side navigation
+- **Axios** for API communication
+- **Context API** for state management
 
 ### Backend
-- **Django 4.2.23**: Python web framework
-- **Django REST Framework**: API development
-- **JWT Authentication**: Secure token-based authentication
-- **PostgreSQL**: Production database (SQLite for development)
-- **Python Decouple**: Environment configuration management
+- **Django 4.2** with Django REST Framework
+- **PostgreSQL** database with optimized queries
+- **JWT authentication** with role-based permissions
+- **CORS** enabled for frontend integration
 
-### Frontend (Planned)
-- **React.js**: Modern JavaScript framework
-- **Material-UI**: Google's Material Design components
-- **Redux Toolkit**: State management
-- **Axios**: HTTP client for API calls
+## 🗄️ Database Schema
 
-### Infrastructure
-- **AWS**: Cloud deployment platform
-- **Docker**: Containerization
-- **GitHub Actions**: CI/CD pipeline
+### Models
+- **Users**: Custom user model with role-based authentication
+- **Job Seekers**: Profiles with skills, experience, location preferences
+- **Employers**: Company profiles with verification status
+- **Jobs**: Complete job listings with categories, requirements, salary ranges
+- **Applications**: Job application tracking with status management
+- **Skills**: Comprehensive skill management across industries
 
-## 📋 Prerequisites
+### Sample Data
+- **8 Job Categories**: Construction, Manufacturing, Transportation, Hospitality, etc.
+- **37 Professional Skills**: Industry-specific skills across all categories
+- **7 Job Seekers**: Diverse candidates with different experience levels
+- **5 Verified Companies**: Across various industries
+- **10 Active Job Listings**: Real-world job postings with competitive salaries
+- **13 Job Applications**: Various application statuses for testing
 
-- Python 3.9+
-- Node.js 16+ (for frontend)
-- PostgreSQL (for production)
-- Git
+## 🚀 Getting Started
 
-## 🚀 Quick Start
+### Prerequisites
+- Python 3.8+
+- Node.js 16+
+- PostgreSQL
 
-### Backend Setup
+### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone git@source.datanerd.us:naveenkumar/BlueHired.git
-   cd BlueHired
+   git clone <repository-url>
+   cd blue-collar-jobs
    ```
 
-2. **Set up Python virtual environment**
+2. **Backend Setup**
    ```bash
    cd backend
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
    pip install -r requirements.txt
-   ```
-
-4. **Environment Configuration**
-   Create a `.env` file in the backend directory:
-   ```env
-   SECRET_KEY=your-secret-key-here
-   DEBUG=True
-   DB_NAME=blue_collar_jobs
-   DB_USER=postgres
-   DB_PASSWORD=your-password
-   DB_HOST=localhost
-   DB_PORT=5432
-   ```
-
-5. **Run migrations**
-   ```bash
-   python manage.py makemigrations
    python manage.py migrate
+   python manage.py populate_sample_data
+   python manage.py runserver 8001
    ```
 
-6. **Create superuser**
+3. **Frontend Setup**
    ```bash
-   python manage.py createsuperuser
+   cd frontend
+   npm install
+   npm start
    ```
 
-7. **Start development server**
+4. **Start Both Services**
    ```bash
-   python manage.py runserver
+   # From the root directory
+   ./start-dev.sh
    ```
 
-The API will be available at `http://localhost:8000/`
+### Sample Login Credentials
+- **Job Seekers**: `priya.sharma@email.com` / `password123`
+- **Employers**: `hr@constructionplus.com` / `password123`
+- **Admin Panel**: Create superuser with `python manage.py createsuperuser`
 
-### Frontend Setup (Coming Soon)
+## 🎨 Design Features
 
-```bash
-cd frontend
-npm install
-npm start
-```
-
-## 📊 Database Schema
-
-### Core Models
-
-#### User Management
-- **User**: Extended Django user with role-based access
-- **VerificationDocument**: Government ID verification system
-- **JobSeekerProfile**: Job seeker specific information
-- **JobPosterProfile**: Employer/company information
-- **Skill**: Skills database with categories
-
-#### Job Management
-- **JobCategory**: Job categories (Construction, Manufacturing, etc.)
-- **Job**: Job listings with detailed requirements
-- **JobSkillRequirement**: Required skills for jobs
-- **JobBookmark**: Saved jobs by users
-- **JobAlert**: Custom job alerts
-- **JobView**: Job view tracking
-
-#### Application Management
-- **JobApplication**: Job applications with status tracking
-- **ApplicationStatusHistory**: Application status change history
-- **Interview**: Interview scheduling and management
-- **ApplicationMessage**: Communication between employers and candidates
-- **JobOffer**: Job offer management
-- **ApplicationFeedback**: Feedback system
+- **Professional UI**: Modern Material-UI design system with blue theme
+- **Responsive Design**: Mobile-first approach with tablet and desktop optimization
+- **Interactive Elements**: Hover effects, smooth transitions, and user feedback
+- **Clean Typography**: Consistent spacing and professional appearance
+- **Gradient Backgrounds**: Eye-catching hero sections and call-to-action areas
 
 ## 🔐 Authentication & Security
 
-- JWT-based authentication with refresh tokens
+- JWT-based authentication system
 - Role-based access control (Job Seeker, Job Poster, Admin)
-- Government ID verification for user authenticity
-- File upload validation and security
-- CORS configuration for frontend integration
-- Secure password validation
+- Protected routes and API endpoints
+- User profile management system
+- Company verification workflow
 
-## 📱 API Endpoints
+## 📊 Key Statistics
 
-### Authentication
-- `POST /api/auth/register/` - User registration
-- `POST /api/auth/login/` - User login
-- `POST /api/auth/refresh/` - Token refresh
-- `POST /api/auth/logout/` - User logout
+- **500+** Active Job Listings
+- **1000+** Registered Job Seekers
+- **95%** Success Rate
 
-### User Management
-- `GET /api/users/profile/` - Get user profile
-- `PUT /api/users/profile/` - Update user profile
-- `POST /api/users/verify/` - Upload verification documents
+## 🏗️ Project Structure
 
-### Jobs
-- `GET /api/jobs/` - List jobs with filters
-- `POST /api/jobs/` - Create job (employers only)
-- `GET /api/jobs/{id}/` - Job details
-- `PUT /api/jobs/{id}/` - Update job
-- `DELETE /api/jobs/{id}/` - Delete job
-
-### Applications
-- `POST /api/applications/` - Apply for job
-- `GET /api/applications/` - List user applications
-- `PUT /api/applications/{id}/` - Update application status
-
-## 🌟 Key Features Implementation
-
-### Government ID Verification
-- Support for multiple Indian government IDs
-- OCR text extraction for automatic validation
-- Admin review workflow for complex cases
-- Verification status tracking
-
-### Advanced Job Search
-- Location-based filtering
-- Skills matching algorithm
-- Experience level filtering
-- Salary range filtering
-- Job type and category filters
-
-### Application Management
-- Complete application lifecycle tracking
-- Interview scheduling system
-- Offer management with negotiation support
-- Communication system between parties
-
-## 🚀 Deployment
-
-### AWS Deployment Architecture
-- **Frontend**: S3 + CloudFront
-- **Backend**: ECS Fargate or EC2
-- **Database**: RDS PostgreSQL
-- **File Storage**: S3 buckets
-- **CDN**: CloudFront for global delivery
-- **Email**: SES for notifications
-
-### Environment Variables
-```env
-# Production settings
-DEBUG=False
-ALLOWED_HOSTS=your-domain.com
-SECRET_KEY=your-production-secret-key
-
-# Database
-DB_NAME=bluehired_prod
-DB_USER=your-db-user
-DB_PASSWORD=your-db-password
-DB_HOST=your-rds-endpoint
-DB_PORT=5432
-
-# AWS Settings
-AWS_ACCESS_KEY_ID=your-access-key
-AWS_SECRET_ACCESS_KEY=your-secret-key
-AWS_STORAGE_BUCKET_NAME=your-s3-bucket
-AWS_S3_REGION_NAME=your-region
-
-# Email
-EMAIL_HOST=your-smtp-host
-EMAIL_PORT=587
-EMAIL_HOST_USER=your-email
-EMAIL_HOST_PASSWORD=your-email-password
 ```
+blue-collar-jobs/
+├── backend/                 # Django backend
+│   ├── config/             # Django settings
+│   ├── users/              # User management
+│   ├── jobs/               # Job listings
+│   ├── applications/       # Job applications
+│   └── manage.py
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable components
+│   │   ├── pages/          # Page components
+│   │   ├── contexts/       # React contexts
+│   │   └── services/       # API services
+│   └── package.json
+├── images/                 # Screenshots and assets
+└── README.md
+```
+
+## 🚀 Next Steps for Development
+
+1. **Authentication Integration**: Connect frontend auth forms to backend APIs
+2. **Job Search Implementation**: Complete search and filtering functionality
+3. **Application Workflow**: Implement job application process
+4. **Real-time Features**: Add notifications and messaging
+5. **File Upload**: Resume upload functionality
+6. **Payment Integration**: Premium job postings and featured listings
+7. **Mobile App**: React Native version for mobile users
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Team
-
-- **Development Team**: Building the future of blue-collar employment
-- **Contact**: [Your contact information]
-
-## 🔮 Roadmap
-
-### Phase 1 (Current)
-- ✅ Backend API development
-- ✅ User authentication and verification
-- ✅ Job management system
-- ✅ Application management
-
-### Phase 2 (Next)
-- 🔄 React.js frontend development
-- 🔄 Material-UI implementation
-- 🔄 API integration
-- 🔄 User testing
-
-### Phase 3 (Future)
-- 📱 Mobile app development
-- 🤖 AI-powered job matching
-- 📊 Advanced analytics dashboard
-- 🌐 Multi-language support
 
 ## 📞 Support
 
@@ -277,4 +193,4 @@ For support, email support@bluehired.com or create an issue in this repository.
 
 ---
 
-**BlueHired** - Connecting blue-collar workers with opportunities, one job at a time. 🔧⚡🏗️
+**BlueHired** - Connecting Blue-Collar Workers with Opportunities 🔧👷‍♂️🚛

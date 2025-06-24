@@ -130,7 +130,7 @@ class Interview(models.Model):
     communication_rating = models.PositiveIntegerField(null=True, blank=True)  # 1-5 scale
     overall_rating = models.PositiveIntegerField(null=True, blank=True)  # 1-5 scale
     recommendation = models.CharField(
-        max_length=20,
+        max_length=25,
         choices=[
             ('strongly_recommend', 'Strongly Recommend'),
             ('recommend', 'Recommend'),
